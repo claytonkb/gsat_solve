@@ -39,17 +39,25 @@ sample CNFs to test the solver with, you can clone my (small) CNF repo:
 Load, solve and dump the result using the following commands:
 
     % bin/test
+    type 0 for menu
     % 3 <cnf_filename>
     % 4
+    st->cl->num_clauses <A>
+    tempv <B>
     % 6
     % 2
 
 Now, the work/check.cnf file contains gsat-solve's SAT solution to your CNF.
-It is not guaranteed to be correct since GSAT is a probabilistic solver. (You
-can increase the chances the solution is correct by providing #tries and #flips
-arguments to command-code 4). You can easily check the solution using a
-standard SAT-solver. If you have cryptominisat installed, for example, you can
-use it to verify the solution as follows:
+It is not guaranteed to be correct since GSAT is a probabilistic solver. You
+can determine if the solver found a solution by comparing A and B above. If
+they are equal, a solution was found. Otherwise B is the maximum number of
+clauses the solver was able to satisfy. (NOTE: You can increase the chances the
+solver finds a solution by providing #tries and #flips arguments to
+command-code 4).
+
+You can easily check the solution using a standard SAT-solver. If you have
+cryptominisat installed, for example, you can use it to verify the solution as
+follows:
 
     % cryptominisat5 work/check.cnf
 
@@ -58,12 +66,16 @@ Viewing
 
 You can dump out a loaded CNF to Graphviz format using command-code 7. The file
 will be sent to work/cnf_graph.dot. The Graphviz neato tool works well for
-converting the dot file to an image format. An example sequence:
+converting the dot file to an image format. An example command sequence:
 
     % bin/test
-    % 3 ../cnf_files/
+    type 0 for menu
+    % 3 ../cnf_files/uf20.cnf
     % 7
+    introspect_sat_gv() ==> work/cnf_graph.dot
     % 2
+    exiting
+    LIB_BABEL: Done
     % neato -Tsvg work/cnf_graph.dot > work/cnf_graph.svg
 
 Open in your favorite image-viewer.
