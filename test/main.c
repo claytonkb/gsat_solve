@@ -170,7 +170,6 @@ void dev_prompt(void){
                 break;
 
             case 7:
-//str introspect_sat_gv(babel_env *be, st_state *st, clause_list *cl){
                 temp = introspect_sat_gv(be, st, cl);
                 io_spit(be, "work/test.dot", temp, U8_ASIZE, OVERWRITE);
                 _say("introspect_sat_gv() ==> work/test.dot");
