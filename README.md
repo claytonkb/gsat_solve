@@ -9,7 +9,7 @@ tries and number of flips per try). Dump result to screen with command-code
 Building
 --------
 
-This program is dependent on three other libararies in my repository. Here is
+This program is dependent on three other libraries in my repository. Here is
 a sample build procedure:
 
     % git clone https://github.com/claytonkb/lib_babel
