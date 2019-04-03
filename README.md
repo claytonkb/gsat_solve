@@ -6,6 +6,8 @@ format CNF file. Solve with command-code 4 (optionally specify number of
 tries and number of flips per try). Dump result to screen with command-code
 5. Dump to file with command-code 6 (be sure to create work directory first).
 
+![Example](doc/example.png)
+
 Building
 --------
 
@@ -65,6 +67,4 @@ converting the dot file to an image format. An example sequence:
     % neato -Tsvg work/cnf_graph.dot > work/cnf_graph.svg
 
 Open in your favorite image-viewer.
-
-![Example](doc/example.png)
 
