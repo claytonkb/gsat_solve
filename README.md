@@ -38,7 +38,7 @@ Load, solve and dump the result using the following commands:
 
     % 3 <cnf_filename>
     % 4
-    % 5
+    % 6
     % 2
 
 Now, the work/check.cnf file contains gsat-solve's SAT solution to your CNF.
