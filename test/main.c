@@ -125,7 +125,7 @@ void dev_prompt(void){
             case 5:
                 printf("\nv ");
                 for(i=1; i<=st->cl->num_variables; i++){
-                    tempv = rdv(st->unpermute_var_array, i);
+                    tempv = i;
                     if(cnf_var_read(st,i) == DEC_ASSIGN1_VS
                         || cnf_var_read(st,i) == IMP_ASSIGN1_VS)
                         printf("%d ", (int)tempv);
@@ -144,7 +144,7 @@ void dev_prompt(void){
                 bsprintf(be, result, &str_offset, "p cnf %d %d\n", cl->num_variables, cl->num_clauses);
 
                 for(i=1; i<=st->cl->num_variables; i++){
-                    tempv = rdv(st->unpermute_var_array, i);
+                    tempv=i;
                     if(cnf_var_read(st,i) == DEC_ASSIGN1_VS
                         || cnf_var_read(st,i) == IMP_ASSIGN1_VS)
                         bsprintf(be, result, &str_offset, "%d 0\n", (int)tempv);
@@ -169,10 +169,11 @@ void dev_prompt(void){
 
                 break;
 
-            case 13:
-//                temp = introspect_sat_gv(be, ACC);
-//                io_spit(be, "work/test.dot", temp, U8_ASIZE, OVERWRITE);
-//                _say("introspect_sat_gv() ==> work/test.dot");
+            case 7:
+//str introspect_sat_gv(babel_env *be, st_state *st, clause_list *cl){
+                temp = introspect_sat_gv(be, st, cl);
+                io_spit(be, "work/test.dot", temp, U8_ASIZE, OVERWRITE);
+                _say("introspect_sat_gv() ==> work/test.dot");
                 break;
 
             default:
@@ -217,7 +218,8 @@ void dev_menu(void){
             "3     .....    load & parse CNF file\n"
             "4     .....    invoke GSAT solver on loaded CNF\n"
             "5     .....    display GSAT solver result\n"
-            "13    .....    introspect_sat_gv()\n");
+            "6     .....    write GSAT solver result to work/check.cnf\n"
+            "7     .....    write CNF graph to work/cnf_graph.dot\n");
 
 }
 
