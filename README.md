@@ -21,8 +21,32 @@ a sample build procedure:
     % bin/test
 
 If you want verbosity during the build, provide the -v or -V switch to make.pl.
-If you want to write your own Makefile or use another build solution, use the
--vt option (verbose, testing-only) to see the shell commands that make.pl would
-issue if it were run without the -t switch to aid you in constructing your own
-build solution.
+If you want to write your own Makefile or use another build solution, you can
+use the -vt option (verbose, testing-only) to see the shell commands that
+make.pl would issue if it were run without the -t switch to aid you in
+constructing your own build solution.
+
+Testing
+-------
+
+To test the solver, load your CNF file using command-code 3. If you want some
+sample CNFs to test the solver with, you can clone my (small) CNF repo:
+
+    % git clone https://github.com/claytonkb/cnf_files
+
+Load, solve and dump the result using the following commands:
+
+    % 3 <cnf_filename>
+    % 4
+    % 5
+    % 2
+
+Now, the work/check.cnf file contains gsat-solve's SAT solution to your CNF.
+It is not guaranteed to be correct since GSAT is a probabilistic solver. (You
+can increase the chances the solution is correct by providing #tries and #flips
+arguments to command-code 4). You can easily check the solution using a
+standard SAT-solver. If you have cryptominisat installed, for example, you can
+use it to verify the solution as follows:
+
+    % cryptominisat5 work/check.cnf
 
