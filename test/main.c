@@ -171,8 +171,8 @@ void dev_prompt(void){
 
             case 7:
                 temp = introspect_sat_gv(be, st, cl);
-                io_spit(be, "work/test.dot", temp, U8_ASIZE, OVERWRITE);
-                _say("introspect_sat_gv() ==> work/test.dot");
+                io_spit(be, "work/cnf_graph.dot", temp, U8_ASIZE, OVERWRITE);
+                _say("introspect_sat_gv() ==> work/cnf_graph.dot");
                 break;
 
             default:

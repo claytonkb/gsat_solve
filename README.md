@@ -36,6 +36,7 @@ sample CNFs to test the solver with, you can clone my (small) CNF repo:
 
 Load, solve and dump the result using the following commands:
 
+    % bin/test
     % 3 <cnf_filename>
     % 4
     % 6
@@ -49,4 +50,21 @@ standard SAT-solver. If you have cryptominisat installed, for example, you can
 use it to verify the solution as follows:
 
     % cryptominisat5 work/check.cnf
+
+Viewing
+-------
+
+You can dump out a loaded CNF to Graphviz format using command-code 7. The file
+will be sent to work/cnf_graph.dot. The Graphviz neato tool works well for
+converting the dot file to an image format. An example sequence:
+
+    % bin/test
+    % 3 ../cnf_files/
+    % 7
+    % 2
+    % neato -Tsvg work/cnf_graph.dot > work/cnf_graph.svg
+
+Open in your favorite image-viewer.
+
+![Example](doc/example.png)
 
